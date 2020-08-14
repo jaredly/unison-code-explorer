@@ -4,7 +4,7 @@
 resolver: lts-14.7
 allow-newer: true # See Unison's stack.yaml
 extra-deps:
-  - git: git@github.com:unisonweb/unison.git
+  - git: git://github.com/unisonweb/unison.git
     commit: 'ff50b3b4f836b0da8da4ce01bea7595587240a90'
     subdirs:
       - yaks/easytest
@@ -27,15 +27,15 @@ extra-deps:
   # additional deps
 
   # The latest
-  - git: git@github.com:pkamenarsky/concur-replica
+  - git: git://github.com/pkamenarsky/concur-replica
     commit: '0bcf622fce055be4cdc3793ef73a16e227384817'
 
   # The latest:
-  - git: git@github.com:pkamenarsky/replica
+  - git: git://github.com/pkamenarsky/replica
     commit: 'db4af3572705bb20222fff1203a1eea3ca5cd542'
 
   # From concur-replica's stack.yaml. Jun 26, 2019
-  - git: git@github.com:ajnsit/concur
+  - git: git://github.com/ajnsit/concur
     commit: '6c6bcc07b2688182945b28f154a013eee3f624c5'
     subdirs:
       - concur-core
