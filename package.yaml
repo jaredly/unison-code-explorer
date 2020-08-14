@@ -34,15 +34,9 @@ dependencies:
 
   # Notable
 
-  - concur-core
-  - concur-replica
   - gitrev
-  - servant-server
   - unison-core
   - unison-parser-typechecker
-  - wai
-  - wai-middleware-static
-  - websockets
   - json
 
   # Other
@@ -71,7 +65,6 @@ executables:
   unison-code-explorer:
     source-dirs: .
     main: Main.hs
-    ghc-options: -threaded -rtsopts
     dependencies:
       - optparse-applicative
       - unison-code-explorer

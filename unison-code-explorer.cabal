@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 2264fa4247cf33d7270f307cd1f9fa42e0c2148773adaae13795c6ee3decbfef
+-- hash: 792d60f75d8172c142d212b9a26d6d1a8646c2e90efdffe3a276a64dce8c08e8
 
 name:           unison-code-explorer
 version:        0.0.0
@@ -18,9 +18,6 @@ library
       UCE.Code.Print
       UCE.DeclarationJson
       UCE.Prelude
-      UCE.UI
-      UCE.UI.Declaration
-      UCE.UI.Search
   other-modules:
       Paths_unison_code_explorer
   hs-source-dirs:
@@ -31,8 +28,6 @@ library
       async
     , base
     , bytestring
-    , concur-core
-    , concur-replica
     , containers
     , directory
     , filepath
@@ -43,7 +38,6 @@ library
     , mtl
     , random
     , safe-exceptions
-    , servant-server
     , stm
     , text
     , time
@@ -51,9 +45,6 @@ library
     , unison-core
     , unison-parser-typechecker
     , unordered-containers
-    , wai
-    , wai-middleware-static
-    , websockets
   default-language: Haskell2010
 
 executable unison-code-explorer
@@ -63,13 +54,11 @@ executable unison-code-explorer
   hs-source-dirs:
       ./.
   default-extensions: DataKinds DeriveAnyClass DeriveFunctor DeriveGeneric DerivingStrategies DeriveDataTypeable ExistentialQuantification FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs LambdaCase MultiParamTypeClasses NamedFieldPuns NoImplicitPrelude OverloadedStrings RankNTypes ScopedTypeVariables StrictData TupleSections TypeFamilies TypeOperators
-  ghc-options: -Wall -threaded -rtsopts
+  ghc-options: -Wall
   build-depends:
       async
     , base
     , bytestring
-    , concur-core
-    , concur-replica
     , containers
     , directory
     , filepath
@@ -81,7 +70,6 @@ executable unison-code-explorer
     , optparse-applicative
     , random
     , safe-exceptions
-    , servant-server
     , stm
     , text
     , time
@@ -90,7 +78,4 @@ executable unison-code-explorer
     , unison-core
     , unison-parser-typechecker
     , unordered-containers
-    , wai
-    , wai-middleware-static
-    , websockets
   default-language: Haskell2010
