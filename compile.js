@@ -36,7 +36,6 @@ pre {
 
 }
 
-
 .Constructor {
     color: #ce8500
 }
@@ -49,7 +48,6 @@ pre {
 .NumericLiteral, .TextLiteral, .CharLiteral, .BooleanLiteral {
     color: green;
 }
-
 
   .ControlKeyword      { font-weight: bold }
   .AbilityBraces       ,

@@ -44,14 +44,7 @@ main = do
     parser :: Parser Config
     parser =
       Config
-        <$> option
-          auto
-          ( long "port"
-              <> help "Port to run server on"
-              <> value 8080
-              <> showDefault
-          )
-        <*> strOption
+        <$> strOption
           ( long "directory"
               <> help "Project directory to explore"
               <> value "."
