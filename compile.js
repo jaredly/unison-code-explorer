@@ -2,9 +2,11 @@ const path = require('path');
 const fs = require('fs');
 const data = require('./out.json');
 
+const byHash = {};
 const byName = {};
 data.forEach((item) => {
     byName[item.name.primaryName] = item;
+    byHash[item.name.rhash] = item;
 });
 const names = Object.keys(byName);
 
@@ -15,6 +17,19 @@ body {
     margin: 0 auto;
     font-size: 16px;
     font-family: system-ui;
+}
+
+.Constructor {
+    color: #ce8500
+}
+.DataTypeKeyword {
+    font-weight: bold;
+}
+.Var {
+    color: #00a;
+}
+.NumericLiteral, .TextLiteral, .CharLiteral, .BooleanLiteral {
+    color: green;
 }
 
 
@@ -71,9 +86,32 @@ const escapeHtml = (x) => x.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 
 const pathEscape = (p) => p.replace(/\./g, '_DOT_').replace(/:/g, '_COLON_');
 
+const pathForHash = (hash) => {
+    // const item = byHash[hash.slice(1)];
+    // if (!item) {
+    //     throw new Error('No hash ' + hash);
+    // }
+    return 'umm';
+};
+
 const renderBody = (body) =>
     `<code><pre>${body
-        .map((i) => escapeHtml(i.contents))
+        .map((i) => {
+            if (i.kind === 'None') {
+                return escapeHtml(i.contents);
+            }
+            if (i.kind.Other) {
+                return `<span class="${i.kind.Other}">${escapeHtml(
+                    i.contents,
+                )}</span>`;
+            }
+            if (i.kind.WithHash) {
+                return `<a class="${i.kind.WithHash.name}" href="${pathForHash(
+                    i.kind.WithHash.hash,
+                )}">${escapeHtml(i.contents)}</a>`;
+            }
+            return escapeHtml(i.contents);
+        })
         .join('')}</pre></code>`;
 
 const renderItem = (path, item) => {
@@ -92,7 +130,9 @@ const renderChild = (path, page) => {
     //     </h3>
     //     </div>`;
     // }
-    return `<div class="child"><h3>
+    return `<div class="child" id="${
+        page.index ? page.index.name.rhash : ''
+    }"><h3>
         ${
             childNames.length
                 ? `<a href="${pathEscape(path[path.length - 1])}/index.html">
